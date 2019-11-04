@@ -1,0 +1,18 @@
+{
+  "name": "eyevinn-demand-side-platform",
+  "version": "0.1.0",
+  "description": "Open Source Demand Side Platform in NodeJs by Eyevinn",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "devel@eyevinn.se",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "debug": "^4.1.1",
+    "moment": "^2.24.0",
+    "openrtb": "^3.6.1",
+    "restify": "^8.4.0",
+    "uuid": "^3.3.3"
+  }
+}
