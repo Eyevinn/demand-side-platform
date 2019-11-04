@@ -105,6 +105,7 @@ class MockAgent {
     this.adServerUrl = 'http://localhost:8081'
     if (options) {
       if (options.adServerUrl) {
+        debug('Using ad server url: ' + options.adServerUrl);
         this.adServerUrl = options.adServerUrl;
       }
     }

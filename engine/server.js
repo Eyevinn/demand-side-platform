@@ -18,8 +18,8 @@ class DSPEngine {
     this.agents = [];
   }
 
-  listen(port) {
-    this.server.listen(port, () => {
+  listen(port, myip) {
+    this.server.listen(port, myip, () => {
       debug('%s listening at %s', this.server.name, this.server.url);
     });
   }
