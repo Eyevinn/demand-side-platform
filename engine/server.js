@@ -74,6 +74,7 @@ class DSPEngine {
     let winBid = agent.getBidById(req.query['bid']);
     let ad = agent.getAdByCampaignId(winBid.cid);
     let creative = agent.getCreativeByAdId(ad.id);
+    debug('creative: %o', creative);
   
     let mediaFile = `<MediaFile delivery="progressive" type="video/mp4" width="${creative.w}" height="${creative.h}" scalable="true"><![CDATA[${creative.mediaFile}]]></MediaFile>`;
     let tracking = `<Impression><![CDATA[${agent.getAdServerUrl()}/track/?price=${req.query.price}]]></Impression>`;
