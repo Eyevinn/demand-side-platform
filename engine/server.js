@@ -14,6 +14,7 @@ class DSPEngine {
 
     this.server.post('/dsp', this._handleBidRequest.bind(this));
     this.server.get('/win', this._handleBidWin.bind(this));
+    this.server.get('/', this._handleHealthCheck.bind(this));
 
     this.agents = [];
   }
@@ -83,6 +84,12 @@ class DSPEngine {
     res.setHeader('content-type', 'application/xml');
     res.sendRaw(videoAdMarkup);
     next();  
+  }
+
+  _handleHealthCheck(req, res, next) {
+    debug('req.url=' + req.url);
+    res.send(200);
+    next();
   }
 }
 
