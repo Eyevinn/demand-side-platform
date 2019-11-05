@@ -43,24 +43,57 @@
   "definitions": {
     "BidRequest": {
       "type": "object",
+      "description": "Open RTB 2.3 BidRequest object",
       "required": [ "id", "imp" ],
       "properties": {
         "id": {
           "type": "string",
           "description": "Unique ID of the bid request, provided by the exchange"
         },
-        "at": {
-          "type": "number",
-          "description": "Auction type, where 1 = First Price, 2 = Second Price Plus."
-        },
         "imp": {
           "$ref": "#/definitions/imp"
+        },
+        "site": {
+          "$ref": "#/definitions/site"
+        },
+        "app": {
+          "$ref": "#/definitions/app"
         },
         "device": {
           "$ref": "#/definitions/device"
         },
         "user": {
           "$ref": "#/definitions/user"
+        },
+        "test": {
+          "type": "number",
+          "description": "Indicator of test mode in which auctions are not billable, where 0 = live mode, 1 = test mode."
+        },
+        "at": {
+          "type": "number",
+          "description": "Auction type, where 1 = First Price, 2 = Second Price Plus."
+        },
+        "tmax": {
+          "type": "number",
+          "description": "Maximum time in milliseconds the exchange allows for bids to be received including Internet latency to avoid timeout. This value supersedes any a priori guidance from the exchange."
+        },
+        "wseat": {
+          "type": "array",
+          "description": "Whitelist of buyer seats allowed to bid on this impression. Seat IDs must be communicated between bidders and the exchange a priori. Omission implies no seat restrictions.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "allimps": {
+          "type": "integer",
+          "description": "Flag to indicate if Exchange can verify that the impressions offered represent all of the impressions available in context (e.g., all on the web page, all video spots such as pre/mid/post roll) to support road-blocking. 0 = no or unknown, 1 = yes, the impressions offered represent all that are available."
+        },
+        "cur": {
+          "type": "array",
+          "description": "Array of allowed currencies for bids on this bid request using ISO-4217 alpha codes. Recommended only if the exchange accepts multiple currencies.",
+          "items": {
+            "type": "string"
+          }
         },
         "bcat": {
           "type": "array",
@@ -76,25 +109,13 @@
             "type": "string"
           }
         },
-        "test": {
-          "type": "number",
-          "description": "Indicator of test mode in which auctions are not billable, where 0 = live mode, 1 = test mode."
-        },
-        "tmax": {
-          "type": "number",
-          "description": "Maximum time in milliseconds the exchange allows for bids to be received including Internet latency to avoid timeout. This value supersedes any a priori guidance from the exchange."
-        },
-        "site": {
-          "$ref": "#/definitions/site"
-        },
         "regs": {
           "$ref": "#/definitions/regs"
         },
         "ext": {
-          "type": "object",
-          "description": "Placeholder for exchange-specific extensions to OpenRTB."
+          "$ref": "#/definitions/ext"
         }
-      },
+    },
       "example": {
         "id": "1",
         "at": "2",
@@ -168,7 +189,74 @@
             "items": {
               "type": "string"
             }
+          },
+          "pmp": {
+            "$ref": "#/definitions/pmp"
+          },
+          "ext": {
+            "$ref": "#/definitions/ext"
           }
+        }
+      }
+    },
+    "ext": {
+      "type": "object",
+      "description": "Placeholder for exchange-specific extensions to OpenRTB."
+    },
+    "app": {
+      "description": "Details via an App object (Section 3.2.7) about the publisher’s app (i.e., non-browser applications).",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Exchange-specific app ID."
+        },
+        "name": {
+          "type": "string",
+          "description": "App name (may be aliased at the publisher’s request)."
+        },
+        "bundle": {
+          "type": "string",
+          "description": "Application bundle or package name (e.g., com.foo.mygame); intended to be a unique ID across exchanges."
+        },
+        "domain": {
+          "type": "string",
+          "description": "Domain of the app (e.g., “mygame.foo.com”)."
+        },
+        "storeurl": {
+          "type": "string",
+          "description": "App store URL for an installed app; for QAG 1.5 compliance."
+        },
+        "cat": {
+          "$ref": "#/definitions/cat"
+        },
+        "sectioncat": {
+          "$ref": "#/definitions/sectioncat"
+        },
+        "pagecat": {
+          "$ref": "#/definitions/pagecat"
+        },
+        "ver": {
+          "type": "string"
+        },
+        "privacypolicy": {
+          "type": "integer"
+        },
+        "paid": {
+          "type": "integer"
+        },
+        "publisher": {
+          "$ref": "#/definitions/publisher"
+        },
+        "content": {
+          "$ref": "#/definitions/content"
+        },
+        "keywords": {
+          "type": "string",
+          "description": "Comma separated list of keywords about the site."
+        },
+        "ext": {
+          "$ref": "#/definitions/ext"
         }
       }
     },
@@ -179,7 +267,64 @@
       "description": "Details via a User object (Section 3.2.20) about the human user of the device; the advertising audience."
     },
     "site": {
-      "description": "Details via a Site object (Section 3.2.13) about the publisher’s website."
+      "description": "Details via a Site object (Section 3.2.13) about the publisher’s website.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Exchange-specific site ID."
+        },
+        "name": {
+          "type": "string",
+          "description": "Site name (may be aliased at the publisher’s request)."
+        },
+        "domain": {
+          "type": "string",
+          "description": "Domain of the site (e.g., “mysite.foo.com”)."
+        },
+        "cat": {
+          "$ref": "#/definitions/cat"
+        },
+        "sectioncat": {
+          "$ref": "#/definitions/sectioncat"
+        },
+        "pagecat": {
+          "$ref": "#/definitions/pagecat"
+        },
+        "page": {
+          "type": "string",
+          "description": "URL of the page where the impression will be shown."
+        },
+        "ref": {
+          "type": "string",
+          "description": "Referrer URL that caused navigation to the current page."
+        },
+        "search": {
+          "type": "string",
+          "description": "Search string that caused navigation to the current page."
+        },
+        "mobile": {
+          "type": "integer",
+          "description": "Mobile-optimized signal, where 0 = no, 1 = yes."
+        },
+        "privacypolicy": {
+          "type": "integer",
+          "description": "Indicates if the site has a privacy policy, where 0 = no, 1 = yes."
+        },
+        "publisher": {
+          "$ref": "#/definitions/publisher"
+        },
+        "content": {
+          "$ref": "#/definitions/content"
+        },
+        "keywords": {
+          "type": "string",
+          "description": "Comma separated list of keywords about the site."
+        },
+        "ext": {
+          "$ref": "#/definitions/ext"
+        }
+      }
     },
     "regs": {
       "description": "A Regs object (Section 3.2.3) that specifies any industry, legal, or governmental regulations in force for this request."
@@ -191,16 +336,127 @@
       "properties": {
         "mimes": {
           "type": "array",
+          "description": "Content MIME types supported. Popular MIME types may include “video/x-ms-wmv” for Windows Media and “video/x-flv” for Flash Video.",
           "items": {
             "type": "string"
           }
         },
         "minduration": {
-          "type": "integer"
+          "type": "integer",
+          "description": "Minimum video ad duration in seconds."
         },
         "maxduration": {
-          "type": "integer"
+          "type": "integer",
+          "description": "Maximum video ad duration in seconds."
+        },
+        "protocols": {
+          "type": "array",
+          "description": "Array of supported video bid response protocols. Refer to List 5.8.",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "w": {
+          "type": "integer",
+          "description": "Width of the video player in pixels."
+        },
+        "h": {
+          "type": "integer",
+          "description": "Height of the video player in pixels."
+        },
+        "startdelay": {
+          "type": "integer",
+          "description": "Indicates the start delay in seconds for pre-roll, mid-roll, or post-roll ad placements. Refer to List 5.10 for additional generic values."
+        },
+        "linearity": {
+          "type": "integer",
+          "description": "Indicates if the impression must be linear, nonlinear, etc. If none specified, assume all are allowed. Refer to List 5.7."
+        },
+        "sequence": {
+          "type": "integer",
+          "description": "If multiple ad impressions are offered in the same bid request, the sequence number will allow for the coordinated delivery of multiple creatives."
+        },
+        "battr": {
+          "type": "array",
+          "description": "Blocked creative attributes. Refer to List 5.3.",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "maxextended": {
+          "type": "integer",
+          "description": "Maximum extended video ad duration if extension is allowed. If blank or 0, extension is not allowed. If -1, extension is allowed, and there is no time limit imposed. If greater than 0, then the value represents the number of seconds of extended play supported beyond the maxduration value."
+        },
+        "minbitrate": {
+          "type": "integer",
+          "description": "Minimum bit rate in Kbps. Exchange may set this dynamically or universally across their set of publishers."
+        },
+        "maxbitrate": {
+          "type": "integer",
+          "description": "Maximum bit rate in Kbps. Exchange may set this dynamically or universally across their set of publishers."
+        },
+        "boxingallowed": {
+          "type": "integer",
+          "description": "Indicates if letter-boxing of 4:3 content into a 16:9 window is allowed, where 0 = no, 1 = yes."
+        },
+        "playbackmethod": {
+          "type": "array",
+          "description": "Allowed playback methods. If none specified, assume all are allowed. Refer to List 5.9.",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "delivery": {
+          "type": "array",
+          "description": "Supported delivery methods (e.g., streaming, progressive). If none specified, assume all are supported. Refer to List 5.13.",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "pos": {
+          "type": "integer",
+          "description": "Ad position on screen. Refer to List 5.4."
+        },
+        "api": {
+          "type": "array",
+          "description": "List of supported API frameworks for this impression. Refer to List 5.6. If an API is not explicitly listed, it is assumed not to be supported.",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "ext": {
+          "$ref": "#/definitions/ext"
         }
+      }
+    },
+    "pmp": {
+      "description": "A Pmp object (Section 3.2.17) containing any private"
+    },
+    "publisher": {
+      "description": "Details about the Publisher (Section 3.2.8) of the site."
+    },
+    "content": {
+      "description": "Details about the Content (Section 3.2.9) within the site."
+    },
+    "cat": {
+      "type": "array",
+      "description": "Array of IAB content categories of the site. Refer to List 5.1.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "sectioncat": {
+      "type": "array",
+      "description": "Array of IAB content categories that describe the current section of the site. Refer to List 5.1.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "pagecat": {
+      "type": "array",
+      "description": "Array of IAB content categories that describe the current page or view of the site. Refer to List 5.1.",
+      "items": {
+        "type": "string"
       }
     }
   }
