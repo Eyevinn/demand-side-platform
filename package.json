@@ -13,6 +13,7 @@
     "moment": "^2.24.0",
     "openrtb": "^3.6.1",
     "restify": "^8.4.0",
+    "swagger-ui-restify": "^3.0.8",
     "uuid": "^3.3.3"
   }
 }

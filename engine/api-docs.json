@@ -1,0 +1,207 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Eyevinn Demand Side Platform server",
+    "description": "A simple Open Source Demand Side Platform for educational and testing purposes",
+    "version": "0.1.0"
+  },
+  "basePath": "/",
+  "paths": {
+    "/dsp": {
+      "post": {
+        "summary": "Provide a response to an Open RTB Bid Request",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "mock",
+            "description": "When true provide a mockup BidResponse",
+            "schema": {
+              "type": "boolean",
+              "default": "true",
+              "example": "true"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": "true",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/BidRequest"
+              }  
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "An Open RTB Bid Response"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "BidRequest": {
+      "type": "object",
+      "required": [ "id", "imp" ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique ID of the bid request, provided by the exchange"
+        },
+        "at": {
+          "type": "number",
+          "description": "Auction type, where 1 = First Price, 2 = Second Price Plus."
+        },
+        "imp": {
+          "$ref": "#/definitions/imp"
+        },
+        "device": {
+          "$ref": "#/definitions/device"
+        },
+        "user": {
+          "$ref": "#/definitions/user"
+        },
+        "bcat": {
+          "type": "array",
+          "description": "Blocked advertiser categories using the IAB content categories. Refer to List 5.1.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "badv": {
+          "type": "array",
+          "description": "Block list of advertisers by their domains (e.g., “ford.com”).",
+          "items": {
+            "type": "string"
+          }
+        },
+        "test": {
+          "type": "number",
+          "description": "Indicator of test mode in which auctions are not billable, where 0 = live mode, 1 = test mode."
+        },
+        "tmax": {
+          "type": "number",
+          "description": "Maximum time in milliseconds the exchange allows for bids to be received including Internet latency to avoid timeout. This value supersedes any a priori guidance from the exchange."
+        },
+        "site": {
+          "$ref": "#/definitions/site"
+        },
+        "regs": {
+          "$ref": "#/definitions/regs"
+        },
+        "ext": {
+          "type": "object",
+          "description": "Placeholder for exchange-specific extensions to OpenRTB."
+        }
+      },
+      "example": {
+        "id": "1",
+        "at": "2",
+        "imp": [
+          {
+            "id": "1",
+            "bidFloor": 1.3,
+            "video": { }
+          },
+          {
+            "id": "2",
+            "bidFloor": 1.3,
+            "video": { }
+          }
+        ]
+      }
+    },
+    "BidResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "imp": {
+      "type": "array",
+      "description": "Array of Imp objects (Section 3.2.4) representing the impressions offered.",
+      "items": {
+        "type": "object",
+        "required": [ "id" ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "A unique identifier for this impression within the context of the bid request (typically, starts with 1 and increments)."
+          },
+          "video": {
+            "$ref": "#/definitions/video"
+          },
+          "displaymanager": {
+            "type": "string",
+            "description": "Name of ad mediation partner, SDK technology, or player responsible for rendering ad (typically video or mobile). Used by some ad servers to customize ad code by partner. Recommended for video and/or apps."
+          },
+          "displaymanagerver": {
+            "type": "string",
+            "description": "Version of ad mediation partner, SDK technology, or player responsible for rendering ad (typically video or mobile). Used by some ad servers to customize ad code by partner. Recommended for video and/or apps."
+          },
+          "instl": {
+            "type": "integer",
+            "description": "1 = the ad is interstitial or full screen, 0 = not interstitial"
+          },
+          "tagid": {
+            "type": "string",
+            "description": "Identifier for specific ad placement or ad tag that was used to initiate the auction. This can be useful for debugging of any issues, or for optimization by the buyer."
+          },
+          "bidfloor": {
+            "type": "number",
+            "description": "Minimum bid for this impression expressed in CPM"
+          },
+          "bidfloorcur": {
+            "type": "string",
+            "description": "Currency specified using ISO-4217 alpha codes. This may be different from bid currency returned by bidder if this is allowed by the exchange."
+          },
+          "secure": {
+            "type": "integer",
+            "description": "Flag to indicate if the impression requires secure HTTPS URL creative assets and markup, where 0 = non-secure, 1 = secure. If omitted, the secure state is unknown, but non-secure HTTP support can be assumed."
+          },
+          "iframebuster": {
+            "type": "array",
+            "description": "Array of exchange-specific names of supported iframe busters.",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "device": {
+      "description": "Details via a Device object (Section 3.2.18) about the user’s device to which the impression will be delivered."
+    },
+    "user": {
+      "description": "Details via a User object (Section 3.2.20) about the human user of the device; the advertising audience."
+    },
+    "site": {
+      "description": "Details via a Site object (Section 3.2.13) about the publisher’s website."
+    },
+    "regs": {
+      "description": "A Regs object (Section 3.2.3) that specifies any industry, legal, or governmental regulations in force for this request."
+    },
+    "video": {
+      "required": [ "mimes" ],
+      "type": "object",
+      "description": "A Video object (Section 3.2.7); required if this impression is offered as a video ad opportunity.",
+      "properties": {
+        "mimes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "minduration": {
+          "type": "integer"
+        },
+        "maxduration": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}

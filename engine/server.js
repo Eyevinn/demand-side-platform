@@ -6,15 +6,23 @@ const moment = require('moment');
 const uuidv1 = require('uuid/v1');
 const ResponseBuilder = openrtb.getBuilder({ builderType: 'bidResponse'} );
 
+const SwaggerUI = require('swagger-ui-restify');
+const apiDocument = require('./api-docs.json');
+
 class DSPEngine {
   constructor(options) {
     this.server = restify.createServer();
     this.server.use(restify.plugins.queryParser());
     this.server.use(restify.plugins.bodyParser());
 
+
     this.server.post('/dsp', this._handleBidRequest.bind(this));
     this.server.get('/win', this._handleBidWin.bind(this));
-    this.server.get('/', this._handleHealthCheck.bind(this));
+    this.server.get('/healthcheck', this._handleHealthCheck.bind(this));
+    this.server.get('/schema/*', restify.plugins.serveStaticFiles('./engine/schema'));
+
+    this.server.get('/*', ...SwaggerUI.serve);
+    this.server.get('/', SwaggerUI.setup(apiDocument));
 
     this.agents = [];
   }
