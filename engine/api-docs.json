@@ -433,10 +433,117 @@
       "description": "A Pmp object (Section 3.2.17) containing any private"
     },
     "publisher": {
-      "description": "Details about the Publisher (Section 3.2.8) of the site."
+      "description": "Details about the Publisher (Section 3.2.8) of the site.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Exchange-specific publisher ID."
+        },
+        "name": {
+          "type": "string",
+          "description": "Publisher name (may be aliased at the publisher’s request)."
+        },
+        "cat": {
+          "$ref": "#/definitions/cat"
+        },
+        "domain": {
+          "type": "string",
+          "description": "Highest level domain of the publisher (e.g., “publisher.com”)."
+        },
+        "ext": {
+          "$ref": "#/definitions/ext"
+        }
+      }
     },
     "content": {
-      "description": "Details about the Content (Section 3.2.9) within the site."
+      "description": "Details about the Content (Section 3.2.9) within the site.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "  ID uniquely identifying the content."
+        },
+        "episode": {
+          "type": "integer",
+          "description": "Episode number (typically applies to video content)."
+        },
+        "title": {
+          "type": "string",
+          "description": "Content title."
+        },
+        "series": {
+          "type": "string",
+          "description": "Content series."
+        },
+        "season": {
+          "type": "Content season; typically for video content (e.g., “Season 3”)."
+        },
+        "producer": {
+          "$ref": "#/definitions/producer"
+        },
+        "url": {
+          "type": "string",
+          "description": "URL of the content, for buy-side contextualization or review."
+        },
+        "cat": {
+          "$ref": "#/definitions/cat"
+        },
+        "videoquality": {
+          "type": "integer",
+          "description": "Video quality per IAB’s classification. Refer to List 5.11."
+        },
+        "context": {
+          "type": "integer",
+          "description": "Type of content (game, video, text, etc.). Refer to List 5.14."
+        },
+        "contentrating": {
+          "type": "string",
+          "description": "Content rating (e.g., MPAA)."
+        },
+        "userrating": {
+          "type": "string",
+          "description": "User rating of the content (e.g., number of stars, likes, etc.)."
+        },
+        "qagmediarating": {
+          "type": "integer",
+          "description": "Media rating per QAG guidelines. Refer to List 5.15."
+        },
+        "keywords": {
+          "type": "string",
+          "description": "Comma separated list of keywords describing the content."
+        },
+        "livestream": {
+          "type:": "integer",
+          "description": "0 = not live, 1 = content is live (e.g., stream, live blog)."
+        },
+        "sourcerelationship": {
+          "type": "integer",
+          "description": "0 = indirect, 1 = direct."
+        },
+        "len": {
+          "type": "integer",
+          "description": "Length of content in seconds; appropriate for video or audio."
+        },
+        "language": {
+          "type": "string",
+          "description": "Content language using ISO-639-1-alpha-2."
+        },
+        "embeddable": {
+          "type": "integer",
+          "description": "Indicator of whether or not the content is embeddable (e.g.,an embeddable video player), where 0 = no, 1 = yes."
+        },
+        "ext": {
+          "$ref": "#/definitions/ext"
+        }
+      }
+    },
+    "producer": {
+      "type": "object",
+      "description": "  Details about the content Producer (Section 3.2.10).",
+      "properties": {
+
+      }
     },
     "cat": {
       "type": "array",
