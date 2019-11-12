@@ -42,8 +42,8 @@ class DSPEngine {
     debug('req.body=%o', req.body);
     debug('req.query=%o', req.query);
 
-    let agent;
-    if (req.query['mock']) {
+    let agent = this.agents.find(a => a.type() === 'MOCK');
+    if (req.query && req.query['mock']) {
       agent = this.agents.find(a => a.type() === 'MOCK');
     }
 
