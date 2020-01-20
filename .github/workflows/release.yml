@@ -12,12 +12,12 @@ jobs:
         id: get_version
         run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
       - name: Deploy new version
-        uses: Eyevinn/action-eks-kubectl@latest
+        uses: Eyevinn/action-eks-kubectl@master
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.DEPLOY_AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.DEPLOY_AWS_SECRET_ACCESS_KEY }}
           REGION: eu-north-1
           CLUSTER: prod
         with:
-          args: set image --record deployment/dsp container=590877988961.dkr.ecr.eu-north-1.amazonaws.com/dsp:${{ steps.get_version.outputs.VERSION }}
+          args: -n production set image --record deployment/dsp container=590877988961.dkr.ecr.eu-north-1.amazonaws.com/dsp:${{ steps.get_version.outputs.VERSION }}
 
