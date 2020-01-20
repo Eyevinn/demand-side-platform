@@ -20,7 +20,7 @@ jobs:
       - name: Deploy new version
         uses: actions-hub/kubectl@master
         env:
-          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG_DATA }}
         with:
           args: set image --record deployment/dsp container=590877988961.dkr.ecr.eu-north-1.amazonaws.com/dsp:${{ steps.get_version.outputs.VERSION }}
 
