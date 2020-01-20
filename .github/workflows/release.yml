@@ -1,10 +1,11 @@
 name: Deploy to production Kubernetes cluster    
+
 on:
   release:
     types: [published]
 
 jobs:
-  run-deploy:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Configure AWS credentials
