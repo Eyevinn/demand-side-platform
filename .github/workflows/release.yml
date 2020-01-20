@@ -1,0 +1,20 @@
+on:
+  release:
+    types: [published]
+
+jobs:
+  run-deploy:
+    name: Deploy to production Kubernetes cluster    
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.DEPLOY_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.DEPLOY_AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-north-1
+      - name: Deploy new version
+        uses: steebchen/kubectl@master
+        with:
+          args: set image --record deployment/dsp container=590877988961.dkr.ecr.eu-north-1.amazonaws.com/dsp:${{ github.ref }}
+
