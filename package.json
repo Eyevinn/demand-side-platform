@@ -1,6 +1,6 @@
 {
   "name": "eyevinn-demand-side-platform",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Open Source Demand Side Platform in NodeJs by Eyevinn",
   "main": "index.js",
   "scripts": {
