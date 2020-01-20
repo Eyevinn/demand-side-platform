@@ -19,5 +19,5 @@ jobs:
           REGION: eu-north-1
           CLUSTER: prod
         with:
-          args: -n production set image --record deployment/dsp container=590877988961.dkr.ecr.eu-north-1.amazonaws.com/dsp:${{ steps.get_version.outputs.VERSION }}
+          args: set image deployment/dsp dsp=590877988961.dkr.ecr.eu-north-1.amazonaws.com/dsp:${{ steps.get_version.outputs.VERSION }} --record
 
