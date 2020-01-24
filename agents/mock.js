@@ -177,27 +177,27 @@ const MOCK_CREATIVES = [
   },
   {
     id: '5',
-    mediaFIle: "http://testcontent.eyevinn.technology/ads/alvedon-10s.mp4",
+    mediaFile: "http://testcontent.eyevinn.technology/ads/alvedon-10s.mp4",
     w: 1920, h: 1080,
   },
   {
     id: '6',
-    mediaFIle: "http://testcontent.eyevinn.technology/ads/bromwel-15s.mp4",
+    mediaFile: "http://testcontent.eyevinn.technology/ads/bromwel-15s.mp4",
     w: 1920, h: 1080,
   },
   {
     id: '7',
-    mediaFIle: "http://testcontent.eyevinn.technology/ads/mio-15s.mp4",
+    mediaFile: "http://testcontent.eyevinn.technology/ads/mio-15s.mp4",
     w: 1920, h: 1080,
   },
   {
     id: '8',
-    mediaFIle: "http://testcontent.eyevinn.technology/ads/volvo-15s.mp4",
+    mediaFile: "http://testcontent.eyevinn.technology/ads/volvo-15s.mp4",
     w: 1920, h: 1080,
   },
   {
     id: '9',
-    mediaFIle: "http://testcontent.eyevinn.technology/ads/willys-20s.mp4",
+    mediaFile: "http://testcontent.eyevinn.technology/ads/willys-20s.mp4",
     w: 1920, h: 1080,
   }
 ]
