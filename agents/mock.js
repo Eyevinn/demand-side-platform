@@ -28,32 +28,62 @@ const MOCK_DEALS = [
   },
   {
     id: 'mock-deal-5',
-    price: 1.85,
+    price: 0.25,
     cid: '5000',
     clearPrice: 0.9,
   },
   {
     id: 'mock-deal-6',
-    price: 1.55,
+    price: 0.35,
     cid: '6000',
     clearPrice: 0.9,
   },
   {
     id: 'mock-deal-7',
-    price: 1.95,
+    price: 0.15,
     cid: '7000',
     clearPrice: 0.9,
   },
   {
     id: 'mock-deal-8',
-    price: 1.25,
+    price: 0.50,
     cid: '8000',
     clearPrice: 0.9,
   },
   {
     id: 'mock-deal-9',
-    price: 1.08,
+    price: 0.58,
     cid: '9000',
+    clearPrice: 0.9,
+  },
+  {
+    id: 'mock-deal-10',
+    price: 1.58,
+    cid: '10000',
+    clearPrice: 0.9,
+  },
+  {
+    id: 'mock-deal-11',
+    price: 2.58,
+    cid: '11000',
+    clearPrice: 0.9,
+  },
+  {
+    id: 'mock-deal-12',
+    price: 1.48,
+    cid: '12000',
+    clearPrice: 0.9,
+  },
+  {
+    id: 'mock-deal-13',
+    price: 2.38,
+    cid: '13000',
+    clearPrice: 0.9,
+  },
+  {
+    id: 'mock-deal-14',
+    price: 2.48,
+    cid: '14000',
     clearPrice: 0.9,
   }
 ];
@@ -94,6 +124,26 @@ const MOCK_CAMPAIGNS = [
   {
     id: '9000',
     adid: '9'
+  },
+  {
+    id: '10000',
+    adid: '10'
+  },
+  {
+    id: '11000',
+    adid: '11'
+  },
+  {
+    id: '12000',
+    adid: '12'
+  },
+  {
+    id: '13000',
+    adid: '13'
+  },
+  {
+    id: '14000',
+    adid: '14'
   }
 ];
 
@@ -151,6 +201,36 @@ const MOCK_ADS = [
     title: 'mock-ad-9',
     duration: 20,
     crid: '9',
+  },
+  {
+    id: '10',
+    title: 'mock-ad-10',
+    duration: 15,
+    crid: '10',
+  },
+  {
+    id: '11',
+    title: 'mock-ad-11',
+    duration: 10,
+    crid: '11',
+  },
+  {
+    id: '12',
+    title: 'mock-ad-12',
+    duration: 20,
+    crid: '12',
+  },
+  {
+    id: '13',
+    title: 'mock-ad-13',
+    duration: 15,
+    crid: '13',
+  },
+  {
+    id: '14',
+    title: 'mock-ad-14',
+    duration: 10,
+    crid: '14',
   }
 ]
 
@@ -178,27 +258,52 @@ const MOCK_CREATIVES = [
   {
     id: '5',
     mediaFile: "http://testcontent.eyevinn.technology/ads/alvedon-10s.mp4",
-    w: 1920, h: 1080,
+    w: 718, h: 404,
   },
   {
     id: '6',
     mediaFile: "http://testcontent.eyevinn.technology/ads/bromwel-15s.mp4",
-    w: 1920, h: 1080,
+    w: 718, h: 404,
   },
   {
     id: '7',
     mediaFile: "http://testcontent.eyevinn.technology/ads/mio-15s.mp4",
-    w: 1920, h: 1080,
+    w: 718, h: 404,
   },
   {
     id: '8',
     mediaFile: "http://testcontent.eyevinn.technology/ads/volvo-15s.mp4",
-    w: 1920, h: 1080,
+    w: 718, h: 404,
   },
   {
     id: '9',
     mediaFile: "http://testcontent.eyevinn.technology/ads/willys-20s.mp4",
-    w: 1920, h: 1080,
+    w: 718, h: 404,
+  },
+  {
+    id: '10',
+    mediaFile: "http://testcontent.eyevinn.technology/ads/sector-15s.mp4",
+    w: 1024, h: 576,
+  },
+  {
+    id: '11',
+    mediaFile: "http://testcontent.eyevinn.technology/ads/kungsangen-10s.mp4",
+    w: 1024, h: 576,
+  },
+  {
+    id: '12',
+    mediaFile: "http://testcontent.eyevinn.technology/ads/nipaxon-20s.mp4",
+    w: 1024, h: 576,
+  },
+  {
+    id: '13',
+    mediaFile: "http://testcontent.eyevinn.technology/ads/specsavers-15s.mp4",
+    w: 1024, h: 576,
+  },
+  {
+    id: '14',
+    mediaFile: "http://testcontent.eyevinn.technology/ads/coldzyme-10s.mp4",
+    w: 1024, h: 576,
   }
 ]
 
