@@ -88,7 +88,8 @@ class DSPEngine {
     let mediaFile = `<MediaFile delivery="progressive" type="video/mp4" width="${creative.w}" height="${creative.h}" scalable="true"><![CDATA[${creative.mediaFile}]]></MediaFile>`;
     let tracking = `<Impression><![CDATA[${agent.getAdServerUrl()}/track/?price=${req.query.price}]]></Impression>`;
     let adSystem = `<AdSystem>${agent.getAdSystem()}</AdSystem><AdTitle>${ad.title}</AdTitle>`;
-    let videoAdMarkup = `<VAST version="2.0"><Ad id="${ad.id}"><InLine>${adSystem}<Creatives><Creative id="video"><Linear><Duration>00:00:15</Duration><MediaFiles>${mediaFile}</MediaFiles></Linear></Creative></Creatives>${tracking}</InLine></Ad></VAST>`;
+    let adDuration = new Date(ad.duration * 1000).toISOString().substr(11, 8);
+    let videoAdMarkup = `<VAST version="2.0"><Ad id="${ad.id}"><InLine>${adSystem}<Creatives><Creative id="video"><Linear><Duration>${adDuration}</Duration><MediaFiles>${mediaFile}</MediaFiles></Linear></Creative></Creatives>${tracking}</InLine></Ad></VAST>`;
     res.setHeader('content-type', 'application/xml');
     res.sendRaw(videoAdMarkup);
     next();  
