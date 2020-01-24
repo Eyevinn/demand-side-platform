@@ -4,7 +4,7 @@ const uuidv1 = require('uuid/v1');
 const MOCK_DEALS = [
   {
     id: 'mock-deal-1',
-    price: 1.05,
+    price: 2.05,
     cid: '1000',
     clearPrice: 0.9,
   },
@@ -26,6 +26,36 @@ const MOCK_DEALS = [
     cid: '4000',
     clearPrice: 0.9,
   },
+  {
+    id: 'mock-deal-5',
+    price: 1.85,
+    cid: '5000',
+    clearPrice: 0.9,
+  },
+  {
+    id: 'mock-deal-6',
+    price: 1.55,
+    cid: '6000',
+    clearPrice: 0.9,
+  },
+  {
+    id: 'mock-deal-7',
+    price: 1.95,
+    cid: '7000',
+    clearPrice: 0.9,
+  },
+  {
+    id: 'mock-deal-8',
+    price: 1.25,
+    cid: '8000',
+    clearPrice: 0.9,
+  },
+  {
+    id: 'mock-deal-9',
+    price: 1.08,
+    cid: '9000',
+    clearPrice: 0.9,
+  }
 ];
 
 const MOCK_CAMPAIGNS = [
@@ -44,6 +74,26 @@ const MOCK_CAMPAIGNS = [
   {
     id: '4000',
     adid: '4'
+  },
+  {
+    id: '5000',
+    adid: '5'
+  },
+  {
+    id: '6000',
+    adid: '6'
+  },
+  {
+    id: '7000',
+    adid: '7'
+  },
+  {
+    id: '8000',
+    adid: '8'
+  },
+  {
+    id: '9000',
+    adid: '9'
   }
 ];
 
@@ -71,6 +121,36 @@ const MOCK_ADS = [
     title: 'mock-ad-4',
     duration: 15,
     crid: '4',
+  },
+  {
+    id: '5',
+    title: 'mock-ad-5',
+    duration: 10,
+    crid: '5',
+  },
+  {
+    id: '6',
+    title: 'mock-ad-6',
+    duration: 15,
+    crid: '6',
+  },
+  {
+    id: '7',
+    title: 'mock-ad-7',
+    duration: 15,
+    crid: '7',
+  },
+  {
+    id: '8',
+    title: 'mock-ad-8',
+    duration: 15,
+    crid: '8',
+  },
+  {
+    id: '9',
+    title: 'mock-ad-9',
+    duration: 20,
+    crid: '9',
   }
 ]
 
@@ -93,6 +173,31 @@ const MOCK_CREATIVES = [
   {
     id: '4',
     mediaFile: "http://testcontent.eyevinn.technology/ads/sff-15s.mp4",
+    w: 1920, h: 1080,
+  },
+  {
+    id: '5',
+    mediaFIle: "http://testcontent.eyevinn.technology/ads/alvedon-10s.mp4",
+    w: 1920, h: 1080,
+  },
+  {
+    id: '6',
+    mediaFIle: "http://testcontent.eyevinn.technology/ads/bromwel-15s.mp4",
+    w: 1920, h: 1080,
+  },
+  {
+    id: '7',
+    mediaFIle: "http://testcontent.eyevinn.technology/ads/mio-15s.mp4",
+    w: 1920, h: 1080,
+  },
+  {
+    id: '8',
+    mediaFIle: "http://testcontent.eyevinn.technology/ads/volvo-15s.mp4",
+    w: 1920, h: 1080,
+  },
+  {
+    id: '9',
+    mediaFIle: "http://testcontent.eyevinn.technology/ads/willys-20s.mp4",
     w: 1920, h: 1080,
   }
 ]
