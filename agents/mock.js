@@ -26,6 +26,7 @@ const MOCK_DEALS = [
     cid: '4000',
     clearPrice: 0.9,
   },
+/*
   {
     id: 'mock-deal-5',
     price: 0.25,
@@ -86,6 +87,7 @@ const MOCK_DEALS = [
     cid: '14000',
     clearPrice: 0.9,
   }
+*/
 ];
 
 const MOCK_CAMPAIGNS = [
