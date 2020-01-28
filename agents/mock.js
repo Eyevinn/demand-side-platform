@@ -58,31 +58,31 @@ const MOCK_DEALS = [
   },
   {
     id: 'mock-deal-10',
-    price: 1.58,
+    price: 0.58,
     cid: '10000',
     clearPrice: 0.9,
   },
   {
     id: 'mock-deal-11',
-    price: 2.58,
+    price: 0.58,
     cid: '11000',
     clearPrice: 0.9,
   },
   {
     id: 'mock-deal-12',
-    price: 1.48,
+    price: 0.48,
     cid: '12000',
     clearPrice: 0.9,
   },
   {
     id: 'mock-deal-13',
-    price: 2.38,
+    price: 0.38,
     cid: '13000',
     clearPrice: 0.9,
   },
   {
     id: 'mock-deal-14',
-    price: 2.48,
+    price: 0.48,
     cid: '14000',
     clearPrice: 0.9,
   }
