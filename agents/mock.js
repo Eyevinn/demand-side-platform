@@ -26,68 +26,66 @@ const MOCK_DEALS = [
     cid: '4000',
     clearPrice: 0.9,
   },
-/*
   {
     id: 'mock-deal-5',
-    price: 0.25,
+    price: 2.25,
     cid: '5000',
     clearPrice: 0.9,
   },
   {
     id: 'mock-deal-6',
-    price: 0.35,
+    price: 2.35,
     cid: '6000',
     clearPrice: 0.9,
   },
   {
     id: 'mock-deal-7',
-    price: 0.15,
+    price: 1.15,
     cid: '7000',
     clearPrice: 0.9,
   },
   {
     id: 'mock-deal-8',
-    price: 0.50,
+    price: 2.50,
     cid: '8000',
     clearPrice: 0.9,
   },
   {
     id: 'mock-deal-9',
-    price: 0.58,
+    price: 3.58,
     cid: '9000',
     clearPrice: 0.9,
   },
   {
     id: 'mock-deal-10',
-    price: 0.58,
+    price: 2.58,
     cid: '10000',
     clearPrice: 0.9,
   },
   {
     id: 'mock-deal-11',
-    price: 0.58,
+    price: 1.58,
     cid: '11000',
     clearPrice: 0.9,
   },
   {
     id: 'mock-deal-12',
-    price: 0.48,
+    price: 1.48,
     cid: '12000',
     clearPrice: 0.9,
   },
   {
     id: 'mock-deal-13',
-    price: 0.38,
+    price: 2.38,
     cid: '13000',
     clearPrice: 0.9,
   },
   {
     id: 'mock-deal-14',
-    price: 0.48,
+    price: 2.48,
     cid: '14000',
     clearPrice: 0.9,
   }
-*/
 ];
 
 const MOCK_CAMPAIGNS = [
